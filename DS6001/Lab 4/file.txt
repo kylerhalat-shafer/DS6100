@@ -1,0 +1,4 @@
+Secret Key = hGlf-1cZ64CENiFaMPfD5cZB82XX-Wf4vYkALaMEwOML77j0v2-iAk13BrXyL2hVwNBL68yiO25xBd2s2QRwfQ
+Client ID = _etdALawiCTReG0CnOj7oB7qij0zvagGJVH7LFlswym7esd1QoDSkiSafnZhMBxp
+Client Access Token = g2moSyiWJTzCUFH8J22VItZN-NaeqcRvO2ih0wQxfiCZXQRqTR0ThUqTLXv9hipH
+Bearer = kXUdQRfm5utTQUFv8AbXuc94joWTL5OeCkhGiVoh8JS127lUaI-lToxD94g3VdDT

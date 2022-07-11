@@ -1,0 +1,69 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+# Metadata
+### Student: Kyler Halat-Shafer
+### User ID: uxt5qb
+
+This salesperson has a quarterly quota of $225,000.
+
+The payment received follows a progressive schedule with four brackets as follows:
+
+For the first 40% of quota, the salesperson receives 7% on quota reached
+For the next 30% of quota, the salesperson receives 10% on quota reached
+For the next 20% of quota, the salesperson receives 13% on quota reached
+For the next 10% of quota, the salesperson receives 16% on quota reached
+
+### Understanding the problem 
+
+Tier 1 -- (225,000 *.40 *.07) this is between 0 and 40%: up until 90,000
+Tier 2 -- (225,000 * .30 * .10) this is between 41% and 70%:  90,001 to 157,500
+Tier 3 -- (225,000 * .20 * .13) this is between 71% and 90% : 157,501 to 202,500
+Tier 4 -- (225,000 * .10 *.16) this is between 91% and 100% : 202,501 to 225,000
+
+Ignoring sales above 225,000
+
+### Quota function for Task 1
+#### I used if and else if statements to build on one another to compute the amount that is subscribed to each bracket
+
+```{r}
+quotafn <- function(n){
+  quota <- 225000
+  if (n <= 0.40) {
+     (quota * n * .07)
+  }
+  else if (n > 0.40 & n <= .70){
+    ((n-.4)*quota *.1) + (.4*quota*.07)
+  }
+  else if (n > .70 & n <= .90){
+    ((n - .7)*quota*.13) + (.3 * quota * .10) + (.4 * quota * .07)
+  }
+  else if (n > .90 & n<= 1){
+    ((n-.9)*quota*.16) + (.2 * quota * .13) + (.3 * quota * .10) + (.4 * quota * .07)
+  }
+}
+```
+```{r}
+quotafn(n=.8)
+```
+```{r}
+quotafn(n=.6)
+```
+
+### Task 2
+#### When I used the range and the seq functions (I had classified the start, stop and step), it did not match the output that I was expecting it to. This could have been done using a for loop / list comprehension to iterate from 0 to 1 by .1, for x in quotafn(x) as well. 
+
+```{r}
+y <- c(quotafn(0),quotafn(.1),quotafn(.2),quotafn(.3),quotafn(.4),quotafn(.5),quotafn(.6),quotafn(.7),quotafn(.8),quotafn(.9),quotafn(1))
+y
+x <- c(0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1)
+x
+plot(x,y)
+```
+```{r}
+quotafn(1)
+```
+
+Manual n at .8 check ... 6,300 + 6,750 + 2,925 = 15,975
+Mannual check for 1, 6,300 + 6,750 + 5,850 + 3,600 = 22,500
